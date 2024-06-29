@@ -1205,7 +1205,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "29ec88db0c7e4f1487ded9ad07dc12b0",
     "m_Id": 0,
-    "m_DisplayName": "Ground Fallof",
+    "m_DisplayName": "Ground Falloff",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",

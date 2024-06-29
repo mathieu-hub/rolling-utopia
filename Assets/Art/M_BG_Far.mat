@@ -176,9 +176,9 @@ Material:
     - _ExcludeFromTUAndAA: 0
     - _Grid_Falloff: 6.2
     - _Grid_Size_Mult: 19.06
-    - _Gride_Size: 0.43
+    - _Gride_Size: 0.36
     - _Ground_Fallof: 10
-    - _Ground_Falloff: 28.13
+    - _Ground_Falloff: 5.33
     - _Ground_Falloff_Contrast: 0.75
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
@@ -193,7 +193,7 @@ Material:
     - _Ior: 1.5
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
-    - _Line_Thickness: 0.016
+    - _Line_Thickness: 0.127
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _Metallic: 0
