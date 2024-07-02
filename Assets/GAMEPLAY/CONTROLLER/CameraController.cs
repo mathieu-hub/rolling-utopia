@@ -33,13 +33,12 @@ public class CameraController : MonoBehaviour
         HandleMovementInput();
     }
 
+
     void HandleMouseInput()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Plane plane = new Plane(Vector3.up, Vector3.zero);
-
-            Plane plane = testPlane.GetComponent<Plane>();
+            Plane plane = new Plane(Vector3.forward, Vector3.zero);
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -47,15 +46,12 @@ public class CameraController : MonoBehaviour
 
             if (plane.Raycast(ray, out entry))
             {
-                Debug.Log("SO6");
                 dragStartPosition = ray.GetPoint(entry);
             }
         }
         if (Input.GetMouseButton(0))
         {
-            //Plane plane = new Plane(Vector3.up, Vector3.zero);
-
-            Plane plane = testPlane.GetComponent<Plane>();
+            Plane plane = new Plane(Vector3.forward, Vector3.zero);
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
