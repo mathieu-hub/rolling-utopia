@@ -1455,9 +1455,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff1c8e7a1cae934bbfc5872817be98e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 533020109}
   movementSpeed: 0.5
   movementTime: 5
+  zoomAmount: {x: 0, y: 0, z: 0.5}
   newPosition: {x: 0, y: 0, z: 0}
+  newZoom: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
