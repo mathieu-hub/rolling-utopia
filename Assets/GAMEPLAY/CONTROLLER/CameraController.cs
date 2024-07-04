@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController instance;
+
+    public Transform targetTransform;
     public Transform cameraTransform;
     
     public float movementSpeed;
@@ -16,12 +19,12 @@ public class CameraController : MonoBehaviour
 
     public Vector3 dragStartPosition;
     public Vector3 dragCurrentPosition;
-
-    public GameObject testPlane;
     
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
+
         newPosition = transform.position;
         newZoom = cameraTransform.localPosition;
     }
@@ -29,13 +32,32 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleMouseInput();
-        HandleMovementInput();
+        if (targetTransform != null) 
+        {
+            transform.position = targetTransform.position;
+        }
+        else 
+        {
+            HandleMouseInput();
+            HandleMovementInput();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            targetTransform = null;
+        }
     }
 
 
     void HandleMouseInput()
     {
+        //Zoom by scrolling with the mouse
+        if (Input.mouseScrollDelta.y != 0)
+        {
+            newZoom += Input.mouseScrollDelta.y * zoomAmount;
+        }
+
+        //Move the camera by drag with the mouse button
         if (Input.GetMouseButtonDown(0))
         {
             Plane plane = new Plane(Vector3.forward, Vector3.zero);
@@ -98,6 +120,5 @@ public class CameraController : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
         cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
-
     }
 }
