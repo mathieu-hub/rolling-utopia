@@ -82,10 +82,12 @@ Material:
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
     - _Float: 4.5
-    - _FoamAmount: -2.2
-    - _FoamCutoff: 0.1
-    - _Foam_Noise_Size: 183.7
-    - _Foam_Speed: 0.05
+    - _FoamAmount: -11.73
+    - _FoamCutoff: 4.42
+    - _FoamGradient: 2.81
+    - _FoamTexelDensity: 30
+    - _Foam_Noise_Size: 7.4
+    - _Foam_Speed: 33.8
     - _OpaqueCullMode: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -114,9 +116,9 @@ Material:
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
-    - _WaveIntensity: 8.79
-    - _WaveSize: 10.5
-    - _WaveSpeed: 0.04
+    - _WaveIntensity: 3.18
+    - _WaveSize: 0.5
+    - _WaveSpeed: 2
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
