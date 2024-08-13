@@ -14,9 +14,16 @@ public class PlacementSystem : MonoBehaviour
 
     [SerializeField] private GameObject gridVisualization;
 
+    private GridData floorData, structureData;
+
+    private Renderer previewRenderer;
+
     private void Start()
     {
         StopPlacement();
+        floorData = new();
+        structureData = new();
+        previewRenderer = cellIndicator.GetComponentInChildren<Renderer>();
     }
 
     public void StartPlacement(int ID)
