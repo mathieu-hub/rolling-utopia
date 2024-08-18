@@ -70,7 +70,9 @@ public class PlacementSystem : MonoBehaviour
 
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
-        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? floorData : structureData;
+        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? floorData : structureData; 
+        //La valeur 0 représente l'index des sols, donc on pourra superposer des structures par dessus l'objet de cet index
+        //Par conséquent, attention à la valeur d'index 0, pour le moment il correspond à Facotry
         
         return selectedData.CanPlaceObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
     }
