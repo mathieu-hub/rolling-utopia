@@ -30,6 +30,6 @@ MonoBehaviour:
       type: 3}
   - <Name>k__BackingField: Generator
     <ID>k__BackingField: 3
-    <Size>k__BackingField: {x: 0, y: 0}
+    <Size>k__BackingField: {x: 2, y: 4}
     <Prefab>k__BackingField: {fileID: 1806150672138301793, guid: 73f4a2c8200dd1c4a8e0aae267cc9333,
       type: 3}
