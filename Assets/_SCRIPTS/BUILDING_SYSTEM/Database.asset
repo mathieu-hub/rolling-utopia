@@ -20,7 +20,7 @@ MonoBehaviour:
       type: 3}
   - <Name>k__BackingField: House
     <ID>k__BackingField: 1
-    <Size>k__BackingField: {x: 4, y: 3}
+    <Size>k__BackingField: {x: 8, y: 6}
     <Prefab>k__BackingField: {fileID: 5778017437242542038, guid: b3964181e1ac94343971fa7f1c8a2f0b,
       type: 3}
   - <Name>k__BackingField: Water
