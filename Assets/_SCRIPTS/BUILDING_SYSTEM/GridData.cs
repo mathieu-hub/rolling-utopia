@@ -39,12 +39,12 @@ public class GridData
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
         foreach (var pos in positionToOccupy)
         {
-            if (placedObjects.ContainsKey(pos))
+            if (placedObjects.ContainsKey(pos) && placedObjects[pos].ID == 1)
             {
-                return false;
+                return true; // C'EST ICI !!!!!
             }
         }
-        return true;
+        return false;
     }
 }
 

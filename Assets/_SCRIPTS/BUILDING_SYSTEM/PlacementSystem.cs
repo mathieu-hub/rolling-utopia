@@ -29,7 +29,7 @@ public class PlacementSystem : MonoBehaviour
         structureData = new();    
     }
 
-    public void StartPlacement(int ID)
+    public void StartPlacement(int ID) //Phase de placement
     {
         StopPlacement();
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
@@ -46,7 +46,7 @@ public class PlacementSystem : MonoBehaviour
         inputManager.OnExit += StopPlacement;
     }
 
-    private void PlaceStructure()
+    private void PlaceStructure() //Action de placement
     {
         if (inputManager.IsPointerOverUI())
         {
@@ -56,19 +56,25 @@ public class PlacementSystem : MonoBehaviour
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-        if (placementValidity == false)
+        if (database.objectsData[selectedObjectIndex].ID != 1)
         {
-            return;
+            if (placementValidity == false)
+            {
+                return;
+            }
         }
 
+        //Placement du prefab
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = grid.CellToWorld(gridPosition);
         placedGameObjects.Add(newObject);
+        //Référencement du prefab dans la Grid Data
         GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? otherData : structureData;
         selectedData.AddObjectAt(gridPosition,
             database.objectsData[selectedObjectIndex].Size,
             database.objectsData[selectedObjectIndex].ID,
             placedGameObjects.Count - 1);
+        //Update la preview
         preview.UpdatePosition(grid.CellToWorld(gridPosition), false);
         Debug.Log(gridPosition);
     }
