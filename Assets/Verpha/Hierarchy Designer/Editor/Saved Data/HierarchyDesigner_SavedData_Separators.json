@@ -365,7 +365,7 @@
             "ImageType": 1
         },
         {
-            "Name": "LEVEL ART",
+            "Name": "MANAGER",
             "TextColor": {
                 "r": 0.0,
                 "g": 0.0,
@@ -375,8 +375,8 @@
             "IsGradientBackground": false,
             "BackgroundColor": {
                 "r": 1.0,
-                "g": 0.0,
-                "b": 0.7659673690795898,
+                "g": 0.4063355326652527,
+                "b": 0.0,
                 "a": 1.0
             },
             "BackgroundGradient": {
@@ -450,7 +450,7 @@
                 "m_NumColorKeys": 2,
                 "m_NumAlphaKeys": 2
             },
-            "FontSize": 17,
+            "FontSize": 14,
             "FontStyle": 1,
             "TextAnchor": 4,
             "ImageType": 1

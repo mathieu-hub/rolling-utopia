@@ -14,7 +14,7 @@ public class PlacementSystem : MonoBehaviour
 
     [SerializeField] private GameObject gridVisualization;
 
-    private GridData floorData, structureData;
+    private GridData otherData, structureData;
 
     private List<GameObject> placedGameObjects = new();
 
@@ -25,7 +25,7 @@ public class PlacementSystem : MonoBehaviour
     private void Start()
     {
         StopPlacement();
-        floorData = new();
+        //floorData = new();
         structureData = new();    
     }
 
@@ -64,19 +64,20 @@ public class PlacementSystem : MonoBehaviour
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = grid.CellToWorld(gridPosition);
         placedGameObjects.Add(newObject);
-        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? floorData : structureData;
+        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? otherData : structureData;
         selectedData.AddObjectAt(gridPosition,
             database.objectsData[selectedObjectIndex].Size,
             database.objectsData[selectedObjectIndex].ID,
             placedGameObjects.Count - 1);
         preview.UpdatePosition(grid.CellToWorld(gridPosition), false);
+        Debug.Log(gridPosition);
     }
 
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
-        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? floorData : structureData; 
-        //La valeur 0 représente l'index des sols, donc on pourra superposer des structures par dessus l'objet de cet index
-        //Par conséquent, attention à la valeur d'index 0, pour le moment il correspond à Facotry
+        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? otherData : structureData; //opérateur conditionnel ternaire
+        //La valeur 0 représente l'index pour une autre GridData, donc on pourra superposer des structures par dessus l'objet de cet index
+        //Par conséquent, attention à la valeur d'index 0, pour le moment elle n'est pas attribuée
         
         return selectedData.CanPlaceObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
     }
