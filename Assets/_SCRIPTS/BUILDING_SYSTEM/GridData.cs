@@ -10,7 +10,7 @@ public class GridData
     public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex)
     {
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
-        PlacementData data = new PlacementData(positionToOccupy, ID, placedObjectIndex);
+        PlacementData data = new PlacementData(positionToOccupy, ID, placedObjectIndex, gridPosition, objectSize);
         foreach (var pos in positionToOccupy)
         {
             if (placedObjects.ContainsKey(pos))
@@ -40,8 +40,10 @@ public class GridData
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
         foreach (var pos in positionToOccupy)
         {
-            if (placedObjects.ContainsKey(pos) && placedObjects[pos].ID == 1 
-                || gridPosition.y == 0 ) //position prise + index struct == 1
+            if (placedObjects.ContainsKey(pos) 
+                && placedObjects[pos].ID == 1 
+                && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y
+                || gridPosition.y == 0 ) //position prise + index struct == 1 OR Y = 0
             {
                 return true; // C'EST ICI !!!!!
             }
@@ -55,7 +57,7 @@ public class GridData
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
         foreach(var pos in positionToOccupy)
         {
-            if (placedObjects.ContainsKey(pos)) //position prise
+            if (placedObjects.ContainsKey(pos) || gridPosition.y == 0) //position prise
             {
                 return false; // ET ICI !!!
             }
@@ -69,11 +71,15 @@ public class PlacementData
     public List<Vector3Int> occupiedPositions;
     public int ID { get; private set; }
     public int PlacedObjectIndex { get; private set; }
+    public Vector3Int PlacedObjectPosition {  get; private set; }
+    public Vector2Int PlacedObjectSize { get; private set; }
 
-    public PlacementData(List<Vector3Int> occupiedPositions, int iD, int placedObjectIndex)
+    public PlacementData(List<Vector3Int> occupiedPositions, int iD, int placedObjectIndex, Vector3Int placedObjectPosition, Vector2Int placedObjectSize)
     {
         this.occupiedPositions = occupiedPositions;
         ID = iD;
         PlacedObjectIndex = placedObjectIndex;
+        PlacedObjectPosition = placedObjectPosition;
+        PlacedObjectSize = placedObjectSize;
     }
 }

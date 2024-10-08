@@ -56,7 +56,7 @@ public class PlacementSystem : MonoBehaviour
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-        if (database.objectsData[selectedObjectIndex].ID != 1)
+        if (database.objectsData[selectedObjectIndex].ID != 0)
         {
             if (placementValidity == false)
             {
