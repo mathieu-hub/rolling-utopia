@@ -81,11 +81,18 @@ public class PlacementSystem : MonoBehaviour
 
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
-        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? otherData : structureData; //opérateur conditionnel ternaire
-        //La valeur 0 représente l'index pour une autre GridData, donc on pourra superposer des structures par dessus l'objet de cet index
+        GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? otherData : structureData; //opérateur conditionnel ternaire                                                                                                     
+        //La valeur 0 représente l'index pour une autre GridData, donc on pourra superposer des structures par dessus l'objet de cet index                                                                                             
         //Par conséquent, attention à la valeur d'index 0, pour le moment elle n'est pas attribuée
-        
-        return selectedData.CanPlaceObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
+
+        if (database.objectsData[selectedObjectIndex].ID == 1)
+        {
+            return selectedData.CanPlaceGroundAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
+        }
+        else
+        {
+            return selectedData.CanPlaceStructAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
+        }
     }
 
     private void StopPlacement()

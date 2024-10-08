@@ -34,17 +34,32 @@ public class GridData
         return returnVal;
     }
 
-    public bool CanPlaceObjectAt(Vector3Int gridPosition, Vector2Int objectSize)
+    public bool CanPlaceStructAt(Vector3Int gridPosition, Vector2Int objectSize)
     {
+        Debug.Log("SO6");
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
         foreach (var pos in positionToOccupy)
         {
-            if (placedObjects.ContainsKey(pos) && placedObjects[pos].ID == 1)
+            if (placedObjects.ContainsKey(pos) && placedObjects[pos].ID == 1) //position prise + index struct == 1
             {
                 return true; // C'EST ICI !!!!!
             }
         }
         return false;
+    }
+
+    public bool CanPlaceGroundAt(Vector3Int gridPosition, Vector2Int objectSize)
+    {
+        Debug.Log("CHO7");
+        List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
+        foreach(var pos in positionToOccupy)
+        {
+            if (placedObjects.ContainsKey(pos)) //position prise
+            {
+                return false; // ET ICI !!!
+            }
+        }
+        return true;
     }
 }
 
