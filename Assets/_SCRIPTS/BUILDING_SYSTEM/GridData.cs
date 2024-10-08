@@ -40,12 +40,12 @@ public class GridData
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
         foreach (var pos in positionToOccupy)
         {
-            if (placedObjects.ContainsKey(pos) 
-                && placedObjects[pos].ID == 1 
-                && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y
-                || gridPosition.y == 0 ) //position prise + index struct == 1 OR Y = 0
+            if (placedObjects.ContainsKey(pos) || gridPosition.y == 0 ) //position prise + index struct == 1 OR Y = 0
             {
-                return true; // C'EST ICI !!!!!
+                if (placedObjects[pos].ID == 1 && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y)
+                {
+                    return true; // C'EST ICI !!!!!
+                } 
             }
         }
         return false;
