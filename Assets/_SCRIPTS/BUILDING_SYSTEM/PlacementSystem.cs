@@ -76,7 +76,7 @@ public class PlacementSystem : MonoBehaviour
             placedGameObjects.Count - 1);
         //Update la preview
         preview.UpdatePosition(grid.CellToWorld(gridPosition), false);
-        Debug.Log(gridPosition);
+        //Debug.Log(gridPosition);
     }
 
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)

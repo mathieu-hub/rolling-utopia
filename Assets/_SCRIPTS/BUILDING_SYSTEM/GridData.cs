@@ -6,6 +6,7 @@ using UnityEngine;
 public class GridData 
 {
     Dictionary<Vector3Int, PlacementData> placedObjects = new();
+    bool isConform = true;
 
     public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex)
     {
@@ -36,24 +37,38 @@ public class GridData
 
     public bool CanPlaceStructAt(Vector3Int gridPosition, Vector2Int objectSize)
     {
-        Debug.Log("SO6");
+        
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
         foreach (var pos in positionToOccupy)
         {
-            if (placedObjects.ContainsKey(pos) || gridPosition.y == 0 ) //position prise + index struct == 1 OR Y = 0
+            if (gridPosition.y == 0)
             {
-                if (placedObjects[pos].ID == 1 && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y)
-                {
-                    return true; // C'EST ICI !!!!!
-                } 
+                return true;
             }
+            else if (placedObjects.ContainsKey(pos))
+            {                
+                if (placedObjects[pos].ID == 2 || placedObjects[pos].ID == 3 || placedObjects[pos].ID == 4)
+                {
+                    Debug.Log(placedObjects[pos].ID);
+                    Debug.Log("YAKARI");
+                    return false;
+                }
+                else if (placedObjects[pos].ID == 1 && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y)
+                {
+                    Debug.Log(placedObjects[pos].ID);
+                    Debug.Log("Petit Tonnerre");
+                    return true;
+                }
+       
+            }
+                
         }
+        //isConform = true;
         return false;
     }
 
     public bool CanPlaceGroundAt(Vector3Int gridPosition, Vector2Int objectSize)
     {
-        Debug.Log("CHO7");
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
         foreach(var pos in positionToOccupy)
         {
