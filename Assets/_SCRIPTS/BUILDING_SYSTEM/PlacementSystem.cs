@@ -22,6 +22,8 @@ public class PlacementSystem : MonoBehaviour
 
     private Vector3Int lastDetectedPosition = Vector3Int.zero;
 
+    private int placedGameObjectsOnPos = 1;
+
     private void Start()
     {
         StopPlacement();
@@ -73,7 +75,8 @@ public class PlacementSystem : MonoBehaviour
         selectedData.AddObjectAt(gridPosition,
             database.objectsData[selectedObjectIndex].Size,
             database.objectsData[selectedObjectIndex].ID,
-            placedGameObjects.Count - 1);
+            placedGameObjects.Count - 1,
+            placedGameObjectsOnPos);
         //Update la preview
         preview.UpdatePosition(grid.CellToWorld(gridPosition), false);
         //Debug.Log(gridPosition);

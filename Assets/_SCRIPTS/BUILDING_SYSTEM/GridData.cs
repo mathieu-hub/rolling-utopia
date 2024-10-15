@@ -2,21 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class GridData 
 {
     Dictionary<Vector3Int, PlacementData> placedObjects = new();
-    bool isConform = true;
 
-    public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex)
+    public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex, int objectCountOnPos)
     {
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
-        PlacementData data = new PlacementData(positionToOccupy, ID, placedObjectIndex, gridPosition, objectSize);
+        PlacementData data = new PlacementData(positionToOccupy, ID, placedObjectIndex, gridPosition, objectSize, objectCountOnPos);
         foreach (var pos in positionToOccupy)
         {
             if (placedObjects.ContainsKey(pos))
             {
-                throw new Exception($"Dictionary already contains this cell position {pos}");
+                placedObjects[pos].PlacedObjectCount++;
+                Debug.Log(placedObjects[pos].PlacedObjectCount);
+                //throw new Exception($"Dictionary already contains this cell position {pos}");
             }
             placedObjects[pos] = data;
         }
@@ -37,7 +39,6 @@ public class GridData
 
     public bool CanPlaceStructAt(Vector3Int gridPosition, Vector2Int objectSize)
     {
-        
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
         foreach (var pos in positionToOccupy)
         {
@@ -46,24 +47,28 @@ public class GridData
                 return true;
             }
             else if (placedObjects.ContainsKey(pos))
-            {                
-                if (placedObjects[pos].ID == 2 || placedObjects[pos].ID == 3 || placedObjects[pos].ID == 4)
+            {
+                if (placedObjects[pos].PlacedObjectCount > 1)
                 {
-                    Debug.Log(placedObjects[pos].ID);
-                    Debug.Log("YAKARI");
+                    Debug.Log("Nop" + placedObjects[pos].PlacedObjectCount);
                     return false;
                 }
-                else if (placedObjects[pos].ID == 1 && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y)
+                else if (placedObjects[pos].ID == 1
+                    && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y)
                 {
-                    Debug.Log(placedObjects[pos].ID);
-                    Debug.Log("Petit Tonnerre");
+                    Debug.Log("Good" + placedObjects[pos].PlacedObjectCount);
                     return true;
                 }
-       
+
+                /*if (placedObjects[pos].ID == 2 || placedObjects[pos].ID == 3 || placedObjects[pos].ID == 4)
+                {
+                    Debug.Log(placedObjects[pos].PlacedObjectCount);
+                    Debug.Log("YAKARI");
+                    return false;
+                }*/
             }
-                
+
         }
-        //isConform = true;
         return false;
     }
 
@@ -88,13 +93,15 @@ public class PlacementData
     public int PlacedObjectIndex { get; private set; }
     public Vector3Int PlacedObjectPosition {  get; private set; }
     public Vector2Int PlacedObjectSize { get; private set; }
+    public int PlacedObjectCount { get ;  set; }
 
-    public PlacementData(List<Vector3Int> occupiedPositions, int iD, int placedObjectIndex, Vector3Int placedObjectPosition, Vector2Int placedObjectSize)
+    public PlacementData(List<Vector3Int> occupiedPositions, int iD, int placedObjectIndex, Vector3Int placedObjectPosition, Vector2Int placedObjectSize, int placedObjectCount)
     {
         this.occupiedPositions = occupiedPositions;
         ID = iD;
         PlacedObjectIndex = placedObjectIndex;
         PlacedObjectPosition = placedObjectPosition;
         PlacedObjectSize = placedObjectSize;
+        PlacedObjectCount = placedObjectCount;
     }
 }
