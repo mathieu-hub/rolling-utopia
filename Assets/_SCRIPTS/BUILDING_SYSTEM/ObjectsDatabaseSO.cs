@@ -21,5 +21,5 @@ public class ObjectData
     [field: SerializeField]
     public GameObject Prefab {  get; private set; }
     [field: SerializeField]
-    public bool canBuildOverIt { get; private set; }
+    public bool isGround { get; private set; }
 }

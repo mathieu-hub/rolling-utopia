@@ -76,7 +76,8 @@ public class PlacementSystem : MonoBehaviour
             database.objectsData[selectedObjectIndex].Size,
             database.objectsData[selectedObjectIndex].ID,
             placedGameObjects.Count - 1,
-            placedGameObjectsOnPos);
+            placedGameObjectsOnPos,
+            database.objectsData[selectedObjectIndex].isGround);
         //Update la preview
         preview.UpdatePosition(grid.CellToWorld(gridPosition), false);
         //Debug.Log(gridPosition);

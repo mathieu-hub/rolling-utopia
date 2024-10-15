@@ -8,16 +8,15 @@ public class GridData
 {
     Dictionary<Vector3Int, PlacementData> placedObjects = new();
 
-    public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex, int objectCountOnPos)
+    public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex, int objectCountOnPos, bool isGround)
     {
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
-        PlacementData data = new PlacementData(positionToOccupy, ID, placedObjectIndex, gridPosition, objectSize, objectCountOnPos);
+        PlacementData data = new PlacementData(positionToOccupy, ID, placedObjectIndex, gridPosition, objectSize, objectCountOnPos, isGround);
         foreach (var pos in positionToOccupy)
         {
             if (placedObjects.ContainsKey(pos))
-            {
-                placedObjects[pos].PlacedObjectCount++;
-                Debug.Log(placedObjects[pos].PlacedObjectCount);
+            {                
+                placedObjects[pos].PlacedObjectCount = 2;
                 //throw new Exception($"Dictionary already contains this cell position {pos}");
             }
             placedObjects[pos] = data;
@@ -48,26 +47,29 @@ public class GridData
             }
             else if (placedObjects.ContainsKey(pos))
             {
-                if (placedObjects[pos].PlacedObjectCount > 1)
+                /*if (placedObjects[pos].PlacedObjectCount > 1)
                 {
-                    Debug.Log("Nop" + placedObjects[pos].PlacedObjectCount);
+                    Debug.Log("Nop");
                     return false;
-                }
-                else if (placedObjects[pos].ID == 1
-                    && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y)
-                {
-                    Debug.Log("Good" + placedObjects[pos].PlacedObjectCount);
-                    return true;
-                }
-
+                }*/
                 /*if (placedObjects[pos].ID == 2 || placedObjects[pos].ID == 3 || placedObjects[pos].ID == 4)
                 {
                     Debug.Log(placedObjects[pos].PlacedObjectCount);
-                    Debug.Log("YAKARI");
                     return false;
                 }*/
-            }
+                
+                if (placedObjects[pos].ID == 1
+                    && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y
+                    && placedObjects[pos].PlacedObjectCount == 1)
+                {
+                    Debug.Log("T_Count " + placedObjects[pos].PlacedObjectCount);
+                    Debug.Log("T_ID " + placedObjects[pos].ID);
+                    return true;
+                }
+                Debug.Log("F_Count " + placedObjects[pos].PlacedObjectCount);
+                Debug.Log("F_ID " + placedObjects[pos].ID);
 
+            }
         }
         return false;
     }
@@ -94,8 +96,9 @@ public class PlacementData
     public Vector3Int PlacedObjectPosition {  get; private set; }
     public Vector2Int PlacedObjectSize { get; private set; }
     public int PlacedObjectCount { get ;  set; }
+    public bool PlacedObjectIsGround { get;  set; }
 
-    public PlacementData(List<Vector3Int> occupiedPositions, int iD, int placedObjectIndex, Vector3Int placedObjectPosition, Vector2Int placedObjectSize, int placedObjectCount)
+    public PlacementData(List<Vector3Int> occupiedPositions, int iD, int placedObjectIndex, Vector3Int placedObjectPosition, Vector2Int placedObjectSize, int placedObjectCount, bool placedObjectIsGround)
     {
         this.occupiedPositions = occupiedPositions;
         ID = iD;
@@ -103,5 +106,6 @@ public class PlacementData
         PlacedObjectPosition = placedObjectPosition;
         PlacedObjectSize = placedObjectSize;
         PlacedObjectCount = placedObjectCount;
+        PlacedObjectIsGround = placedObjectIsGround;
     }
 }
