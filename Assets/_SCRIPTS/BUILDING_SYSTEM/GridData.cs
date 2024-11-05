@@ -52,9 +52,9 @@ public class GridData
                     return false;
                 }
             }
-            else if (!placedObjects.ContainsKey(pos) && gridPosition.y == 0 /*&& previewStructCollision == false*/) 
+            if (gridPosition.y == 0)
             {
-                return true;                 
+                return true;
             }
         }
         return false;
