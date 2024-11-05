@@ -41,34 +41,28 @@ public class GridData
         List<Vector3Int> positionToOccupy = CalculatePositions(gridPosition, objectSize);
         foreach (var pos in positionToOccupy)
         {
-            if (gridPosition.y == 0)
+            if (placedObjects.ContainsKey(pos))
             {
-                return true;
-            }
-            else if (placedObjects.ContainsKey(pos))
-            {
-                /*if (placedObjects[pos].PlacedObjectCount > 1)
+                //Debug.Log("GRIVIOUS " + gridPosition.y);
+                //Debug.Log(placedObjects[pos].PlacedObjectPosition.y + placedObjects[pos].PlacedObjectSize.y);
+                if (gridPosition.y == (placedObjects[pos].PlacedObjectPosition.y + placedObjects[pos].PlacedObjectSize.y)-1)
                 {
-                    Debug.Log("Nop");
-                    return false;
-                }*/
-                /*if (placedObjects[pos].ID == 2 || placedObjects[pos].ID == 3 || placedObjects[pos].ID == 4)
-                {
-                    Debug.Log(placedObjects[pos].PlacedObjectCount);
-                    return false;
-                }*/
-                
-                if (placedObjects[pos].ID == 1
+                    Debug.Log("CAHOOT");
+                    return true;
+                }
+                /*if (placedObjects[pos].ID == 1
                     && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y
                     && placedObjects[pos].PlacedObjectCount == 1)
                 {
                     Debug.Log("T_Count " + placedObjects[pos].PlacedObjectCount);
                     Debug.Log("T_ID " + placedObjects[pos].ID);
                     return true;
-                }
-                Debug.Log("F_Count " + placedObjects[pos].PlacedObjectCount);
-                Debug.Log("F_ID " + placedObjects[pos].ID);
+                }*/
+            }
 
+            if (gridPosition.y == 0)
+            {
+                return true;
             }
         }
         return false;
