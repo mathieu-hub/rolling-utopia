@@ -47,22 +47,16 @@ public class GridData
                 //Debug.Log(placedObjects[pos].PlacedObjectPosition.y + placedObjects[pos].PlacedObjectSize.y);
                 if (gridPosition.y == (placedObjects[pos].PlacedObjectPosition.y + placedObjects[pos].PlacedObjectSize.y)-1)
                 {
-                    Debug.Log("CAHOOT");
                     return true;
                 }
-                /*if (placedObjects[pos].ID == 1
-                    && gridPosition.y == placedObjects[pos].PlacedObjectPosition.y
-                    && placedObjects[pos].PlacedObjectCount == 1)
+                else
                 {
-                    Debug.Log("T_Count " + placedObjects[pos].PlacedObjectCount);
-                    Debug.Log("T_ID " + placedObjects[pos].ID);
-                    return true;
-                }*/
+                    return false;
+                }
             }
-
-            if (gridPosition.y == 0)
+            else if (!placedObjects.ContainsKey(pos) && gridPosition.y == 0 /*&& previewStructCollision == false*/) 
             {
-                return true;
+                return true;                 
             }
         }
         return false;

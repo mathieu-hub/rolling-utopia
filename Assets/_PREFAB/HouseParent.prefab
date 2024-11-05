@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6974759548577767606}
+  - component: {fileID: 8211425082478858600}
+  - component: {fileID: 5921651066962054171}
   m_Layer: 0
   m_Name: HouseParent
   m_TagString: Untagged
@@ -32,6 +34,32 @@ Transform:
   - {fileID: 757674975092621478}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8211425082478858600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778017437242542038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30858b4122ff1224e81630e3802ec1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5921651066962054171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778017437242542038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2eeb1d71aa3e2642b1f08e053a55104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
+  collideWithStruct: 0
 --- !u!1001 &939409666782537549
 PrefabInstance:
   m_ObjectHideFlags: 0
