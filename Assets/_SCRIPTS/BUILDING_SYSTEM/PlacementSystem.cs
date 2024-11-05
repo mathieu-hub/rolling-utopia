@@ -20,6 +20,8 @@ public class PlacementSystem : MonoBehaviour
 
     [SerializeField] private PreviewSystem preview;
 
+    public GameObject previewStruct;
+
     private Vector3Int lastDetectedPosition = Vector3Int.zero;
 
     private int placedGameObjectsOnPos = 1;
@@ -93,11 +95,25 @@ public class PlacementSystem : MonoBehaviour
 
         if (database.objectsData[selectedObjectIndex].ID == 1)
         {
-            return selectedData.CanPlaceGroundAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
+            if (previewStruct.GetComponent<StructDetection>().collideWithStruct)
+            {
+                return false;
+            }
+            else
+            {
+                return selectedData.CanPlaceGroundAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
+            }
         }
         else
         {
-            return selectedData.CanPlaceStructAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
+            if (previewStruct.GetComponent<StructDetection>().collideWithStruct)
+            {
+                return false;
+            }
+            else
+            {
+                return selectedData.CanPlaceStructAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
+            }
         }
     }
 

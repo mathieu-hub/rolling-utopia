@@ -573,6 +573,7 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 5602964481354464cbd95ba915a9dda3, type: 2}
   gridVisualization: {fileID: 1659653775}
   preview: {fileID: 2061479592}
+  previewStruct: {fileID: 0}
 --- !u!1 &443385646
 GameObject:
   m_ObjectHideFlags: 0
@@ -3204,6 +3205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7eeced3d93a704392af73c188b5e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placementSystem: {fileID: 299308953}
   previewYOffset: 0.06
   cellIndicator: {fileID: 1722547734}
   previewObject: {fileID: 0}

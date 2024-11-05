@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PreviewSystem : MonoBehaviour
 {
+    [SerializeField] private PlacementSystem placementSystem;
+
     [SerializeField] private float previewYOffset = 0.06f;
 
     [SerializeField] private GameObject cellIndicator;
@@ -25,6 +27,7 @@ public class PreviewSystem : MonoBehaviour
     public void StartShowingPlacementPreview(GameObject prefab, Vector2Int size)
     {
         previewObject = Instantiate(prefab);
+        placementSystem.previewStruct = previewObject;
         PreparePreview(previewObject);
         PrepareCursor(size);
         cellIndicator.SetActive(true);
