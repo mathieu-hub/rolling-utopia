@@ -70,6 +70,7 @@ public class PlacementSystem : MonoBehaviour
         GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newObject.transform.position = grid.CellToWorld(gridPosition);
         newObject.GetComponent<StructParameters>().isPosed = true; //HERE
+        newObject.GetComponent<BoxCollider>().isTrigger = true;
         placedGameObjects.Add(newObject);
         //Référencement du prefab dans la Grid Data
         GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? otherData : structureData;

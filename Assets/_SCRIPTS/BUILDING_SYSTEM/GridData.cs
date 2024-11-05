@@ -43,8 +43,6 @@ public class GridData
         {
             if (placedObjects.ContainsKey(pos))
             {
-                //Debug.Log("GRIVIOUS " + gridPosition.y);
-                //Debug.Log(placedObjects[pos].PlacedObjectPosition.y + placedObjects[pos].PlacedObjectSize.y);
                 if (gridPosition.y == (placedObjects[pos].PlacedObjectPosition.y + placedObjects[pos].PlacedObjectSize.y)-1)
                 {
                     return true;
