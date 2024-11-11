@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30858b4122ff1224e81630e3802ec1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  structNature: 2
+  ID: 0
   structPosition: {x: 0, y: 0, z: 0}
   isPosed: 0
 --- !u!114 &5921651066962054171

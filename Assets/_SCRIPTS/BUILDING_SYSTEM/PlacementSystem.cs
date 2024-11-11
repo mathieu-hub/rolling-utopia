@@ -95,7 +95,7 @@ public class PlacementSystem : MonoBehaviour
 
         if (database.objectsData[selectedObjectIndex].ID == 1)
         {
-            if (previewStruct.GetComponent<StructDetection>().collideWithStruct)
+            if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
             {
                 return false;
             }
@@ -106,7 +106,7 @@ public class PlacementSystem : MonoBehaviour
         }
         else
         {
-            if (previewStruct.GetComponent<StructDetection>().collideWithStruct)
+            if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
             {
                 return false;
             }
