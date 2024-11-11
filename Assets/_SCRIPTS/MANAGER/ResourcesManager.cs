@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class ResourcesManager : MonoBehaviour
 {
-    public int credits = 0;
-    public int scraps = 0;
-    public int metal = 0;
+    public static ResourcesManager Instance;
 
-    public int citizen = 0;
-    public int globalSatisfaction = 0;
-    public int happiness = 0;
-    public int health = 0;
-    public int hungriness = 0;
+    public int credits;
+    public int scraps;
+    public int metal;
 
-    public int structures = 0;
-    public int water = 0;
-    public int energy = 0;
+    public int citizen;
+    public int globalSatisfaction;
+    public int happiness;
+    public int health;
+    public int hungriness;
+
+    public int structures;
+    public int water;
+    public int energy;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        UIManager.Instance.UpdateResourcesValuesUI();
+    }
 }
