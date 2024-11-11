@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M__house
+  m_Name: M__house Metal
   m_Shader: {fileID: -6465566751694194690, guid: dcc8d873ae03ce9469812c32d132bd67,
     type: 3}
   m_Parent: {fileID: 0}
@@ -81,7 +81,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _Metallic: 0
+    - _Metallic: 1
     - _NoiseMask: 26
     - _NoiseSize: 110.5
     - _NoiseTD: 50
@@ -92,7 +92,6 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Roughness_offset: 0.08
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
