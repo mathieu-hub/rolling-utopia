@@ -17,7 +17,7 @@ public class StructDetection : MonoBehaviour
             if (other.GetComponent<StructParameters>().ID >= 1
                 && other.GetComponent<StructParameters>().isPosed)
             {
-                Debug.Log("Collide Buildable");
+                //Debug.Log("Collide Buildable");
                 collideWithBuildable = true;
             }
 
@@ -25,7 +25,7 @@ public class StructDetection : MonoBehaviour
             if (other.GetComponent<StructParameters>().ID == 0
                 && other.GetComponent<StructParameters>().isPosed)
             {
-                Debug.Log("Collide CP_Platform");
+                //Debug.Log("Collide CP_Platform");
                 collideWithCP_Platform = true;
             }
         }
@@ -39,7 +39,7 @@ public class StructDetection : MonoBehaviour
             if (other.GetComponent<StructParameters>().ID >= 1
                 && other.GetComponent<StructParameters>().isPosed)
             {
-                Debug.Log("Discollide Buildable");
+                //Debug.Log("Discollide Buildable");
                 collideWithBuildable = false;
             }
 
@@ -47,7 +47,7 @@ public class StructDetection : MonoBehaviour
             if (other.GetComponent<StructParameters>().ID == 0
                 && other.GetComponent<StructParameters>().isPosed)
             {
-                Debug.Log("Discollide CP_Platform");
+                //Debug.Log("Discollide CP_Platform");
                 collideWithCP_Platform = false;
             }
         }

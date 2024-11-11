@@ -52,10 +52,10 @@ public class GridData
                     return false;
                 }
             }
-            if (gridPosition.y == 0)
+            /*if (gridPosition.y == 0)
             {
                 return true;
-            }
+            }*/
         }
         return false;
     }

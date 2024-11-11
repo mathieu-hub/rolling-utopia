@@ -93,7 +93,7 @@ public class PlacementSystem : MonoBehaviour
         //La valeur 0 représente l'index pour une autre GridData, donc on pourra superposer des structures par dessus l'objet de cet index                                                                                             
         //Par conséquent, attention à la valeur d'index 0, pour le moment elle n'est pas attribuée
 
-        if (database.objectsData[selectedObjectIndex].ID == 1)
+        if (database.objectsData[selectedObjectIndex].ID == 1) //À REVOIR
         {
             if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
             {
@@ -108,10 +108,27 @@ public class PlacementSystem : MonoBehaviour
         {
             if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
             {
+                Debug.Log("BuildableCollideOnlyReaded");
                 return false;
             }
+
+            if (previewStruct.GetComponent<StructDetection>().collideWithCP_Platform)
+            {
+                if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
+                {
+                    Debug.Log("Buildable && PlatformCollideOnlyReaded");
+                    return false;
+                }
+                else
+                {
+                    Debug.Log("PlatformCollideOnlyReaded");
+                    return true;
+                }
+            }
+
             else 
             {
+                Debug.Log("GridDataConditionReaded");
                 return selectedData.CanPlaceStructAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
             }
         }
@@ -137,12 +154,16 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
+        // !!! À REMETTRE DANS UNE CONDITION SI TROP GOURMAND EN PERFS
+        bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
+        preview.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
+
         if (lastDetectedPosition != gridPosition)
         {
-            bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
+            //bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
 
             mouseIndicator.transform.position = mousePosition;
-            preview.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
+            //preview.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
             lastDetectedPosition = gridPosition;
         }        
     }
