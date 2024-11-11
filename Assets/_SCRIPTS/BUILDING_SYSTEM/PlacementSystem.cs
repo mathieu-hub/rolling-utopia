@@ -99,7 +99,7 @@ public class PlacementSystem : MonoBehaviour
             {
                 return false;
             }
-            else
+            else 
             {
                 return selectedData.CanPlaceGroundAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
             }
@@ -110,7 +110,7 @@ public class PlacementSystem : MonoBehaviour
             {
                 return false;
             }
-            else
+            else 
             {
                 return selectedData.CanPlaceStructAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
             }
