@@ -108,7 +108,6 @@ public class PlacementSystem : MonoBehaviour
         {
             if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
             {
-                Debug.Log("BuildableCollideOnlyReaded");
                 return false;
             }
 
@@ -116,19 +115,16 @@ public class PlacementSystem : MonoBehaviour
             {
                 if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
                 {
-                    Debug.Log("Buildable && PlatformCollideOnlyReaded");
                     return false;
                 }
                 else
                 {
-                    Debug.Log("PlatformCollideOnlyReaded");
                     return true;
                 }
             }
 
             else 
             {
-                Debug.Log("GridDataConditionReaded");
                 return selectedData.CanPlaceStructAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
             }
         }

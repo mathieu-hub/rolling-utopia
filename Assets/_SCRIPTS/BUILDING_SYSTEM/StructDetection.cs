@@ -9,6 +9,8 @@ public class StructDetection : MonoBehaviour
     [Space(5)]
     public bool collideWithCP_Platform;
 
+    private float verticalPos;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<StructDetection>() != null)
@@ -22,12 +24,13 @@ public class StructDetection : MonoBehaviour
             }
 
             //CP_PLATFORM
-            if (other.GetComponent<StructParameters>().ID == 0
+            /*if (other.GetComponent<StructParameters>().ID == 0
                 && other.GetComponent<StructParameters>().isPosed)
             {
                 //Debug.Log("Collide CP_Platform");
                 collideWithCP_Platform = true;
-            }
+                verticalPos = gameObject.transform.position.y;
+            }*/
         }
     }
 
@@ -44,12 +47,32 @@ public class StructDetection : MonoBehaviour
             }
 
             //CP_PLATFORM
-            if (other.GetComponent<StructParameters>().ID == 0
+            /*if (other.GetComponent<StructParameters>().ID == 0
                 && other.GetComponent<StructParameters>().isPosed)
             {
-                //Debug.Log("Discollide CP_Platform");
+                Debug.Log("Discollide CP_Platform");
+                collideWithCP_Platform = false;
+            }*/
+        }
+    }
+
+    private void Update()
+    {
+        if (gameObject.transform.position.y < 1)
+        {
+            collideWithCP_Platform = true;
+        }
+        else
+        {
+            collideWithCP_Platform = false;
+        }
+
+        /*if (collideWithCP_Platform)
+        {
+            if (gameObject.transform.position.y != verticalPos)
+            {
                 collideWithCP_Platform = false;
             }
-        }
+        }*/
     }
 }
