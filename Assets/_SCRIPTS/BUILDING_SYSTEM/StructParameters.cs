@@ -7,6 +7,10 @@ public class StructParameters : MonoBehaviour
     [Header("GENERAL")]
     public StructNature structNature;
     public int ID;
+    [Space(5)]
+    public int creditsCost;
+    public int scrapsCost;
+    public int metalsCost;
 
     [Space(10)]
     [Header("IN GAME")]
