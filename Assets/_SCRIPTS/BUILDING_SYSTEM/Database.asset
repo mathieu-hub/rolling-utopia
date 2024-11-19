@@ -39,7 +39,7 @@ MonoBehaviour:
     <isGround>k__BackingField: 0
   - <Name>k__BackingField: Factory
     <ID>k__BackingField: 5
-    <Size>k__BackingField: {x: 6, y: 5}
+    <Size>k__BackingField: {x: 12, y: 9}
     <Prefab>k__BackingField: {fileID: 7715479941195078301, guid: 1dc9bbb9e34d6dd4e86a24a543da46e2,
       type: 3}
     <isGround>k__BackingField: 0
