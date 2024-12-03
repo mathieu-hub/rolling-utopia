@@ -50,6 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   structNature: 4
   ID: 0
+  creditsCost: 7
+  scrapsCost: 0
+  metalsCost: 0
   structPosition: {x: 0, y: 0, z: 0}
   isPosed: 0
 --- !u!114 &6886302934906132909
@@ -64,8 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2eeb1d71aa3e2642b1f08e053a55104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 4
-  collideWithStruct: 0
+  collideWithBuildable: 0
+  collideWithCP_Platform: 0
 --- !u!65 &9026468108629371185
 BoxCollider:
   m_ObjectHideFlags: 0
