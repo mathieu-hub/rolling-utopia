@@ -16,7 +16,7 @@ public class StructParameters : MonoBehaviour
     [Header("IN GAME")]
     public Vector3 structPosition;
     [Space(5)]
-    public bool enoughResourcesToPose; //Use this as the 2nd condition to place structure 
+    public bool enoughResourcesToPose; 
     public bool isPosed;
 
     private void Start()
