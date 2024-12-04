@@ -7,24 +7,43 @@ public class StructParameters : MonoBehaviour
     [Header("GENERAL")]
     public StructNature structNature;
     public int ID;
-    [Space(5)]
+
+    [Header("Cost")]
     public int creditsCost;
     public int scrapsCost;
     public int metalsCost;
 
-    [Space(10)]
     [Header("IN GAME")]
     public Vector3 structPosition;
+    [Space(5)]
+    public bool enoughResourcesToPose; //Use this as the 2nd condition to place structure 
     public bool isPosed;
 
     private void Start()
     {
         ID = ((int)structNature);
+        CheckResourcesToPlacementValidity();
     }
 
     private void Update()
     {
         structPosition = transform.position;
+    }
+
+    public void CheckResourcesToPlacementValidity()
+    {
+        if (creditsCost <= ResourcesManager.Instance.credits
+            && scrapsCost <= ResourcesManager.Instance.scraps
+            && metalsCost <= ResourcesManager.Instance.metal)
+        {
+            enoughResourcesToPose = true;
+            Debug.Log("Enough");
+        }
+        else
+        {
+            enoughResourcesToPose = false;
+            Debug.Log("Not enough");
+        }
     }
 }
 

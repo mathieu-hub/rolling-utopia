@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40a9dab381cb79499f49d1a2df18415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  credits: 0
+  credits: 100
   scraps: 0
   metal: 0
   citizen: 0

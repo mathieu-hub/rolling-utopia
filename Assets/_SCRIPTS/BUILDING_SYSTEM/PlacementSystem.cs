@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,6 +59,8 @@ public class PlacementSystem : MonoBehaviour
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
 
+        previewStruct.GetComponent<StructParameters>().CheckResourcesToPlacementValidity();
+
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
         if (database.objectsData[selectedObjectIndex].ID != 0)
         {
@@ -74,6 +76,11 @@ public class PlacementSystem : MonoBehaviour
         newObject.GetComponent<StructParameters>().isPosed = true; //HERE
         newObject.GetComponent<BoxCollider>().isTrigger = true;
         placedGameObjects.Add(newObject);
+        //Transaction des resources
+        ResourcesManager.Instance.StructResourcesTransaction(
+            previewStruct.GetComponent<StructParameters>().creditsCost,
+            previewStruct.GetComponent<StructParameters>().scrapsCost,
+            previewStruct.GetComponent<StructParameters>().metalsCost);
         //Référencement du prefab dans la Grid Data
         GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? otherData : structureData;
         selectedData.AddObjectAt(gridPosition,
@@ -106,27 +113,37 @@ public class PlacementSystem : MonoBehaviour
         }
         else
         {
-            if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
+            if (previewStruct.GetComponent<StructParameters>().enoughResourcesToPose)
             {
-                return false;
-            }
-
-            if (previewStruct.GetComponent<StructDetection>().collideWithCP_Platform)
-            {
+                Debug.Log("Have enough resources to place Struct with ID " + previewStruct.GetComponent<StructParameters>().ID);
+                
                 if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
                 {
                     return false;
                 }
+
+                if (previewStruct.GetComponent<StructDetection>().collideWithCP_Platform)
+                {
+                    if (previewStruct.GetComponent<StructDetection>().collideWithBuildable)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+
                 else
                 {
-                    return true;
+                    return selectedData.CanPlaceStructAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
                 }
             }
-
-            else 
+            else
             {
-                return selectedData.CanPlaceStructAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
-            }
+                Debug.Log("Havn't enough resources");
+                return false;
+            }            
         }
     }
 

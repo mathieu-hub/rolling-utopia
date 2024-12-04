@@ -29,4 +29,13 @@ public class ResourcesManager : MonoBehaviour
     {
         UIManager.Instance.UpdateResourcesValuesUI();
     }
+
+    public void StructResourcesTransaction(int creditCost, int scrapCost, int metalCost)
+    {
+        credits -= creditCost;
+        scraps -= scrapCost;
+        metal -= metalCost;
+
+        UIManager.Instance.UpdateResourcesValuesUI();
+    }
 }
