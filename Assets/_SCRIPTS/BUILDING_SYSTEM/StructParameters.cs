@@ -8,6 +8,9 @@ public class StructParameters : MonoBehaviour
     public StructNature structNature;
     public int ID;
 
+    [Header("Bulding")]
+    public bool cannotBuildOnIt; //Use this parameter as a placement validity condition
+
     [Header("Cost")]
     public int creditsCost;
     public int scrapsCost;

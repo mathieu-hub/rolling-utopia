@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class StructDetection : MonoBehaviour
 {
+    [Header("Interactions - When Placing")]
     public bool collideWithBuildable;
     [Space(5)]
     public bool collideWithCP_Platform;
-    [Space(5)]
+
+    [Header("Interactions - When is Placed")]
     public bool isDetectedInPlacementAOE; //Use this parameter as a condition to call function (bonus, malus, gains)
 
     private float verticalPos;
